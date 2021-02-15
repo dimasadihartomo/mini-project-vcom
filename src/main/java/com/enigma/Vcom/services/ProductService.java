@@ -12,5 +12,7 @@ public interface ProductService {
 
     Product findProductById(Integer id);
 
+    List<Product> findAllProductByPrice(Integer min, Integer max);
+
     List<Product> findAllProduct();
 }

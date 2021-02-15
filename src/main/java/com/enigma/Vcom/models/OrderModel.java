@@ -1,5 +1,7 @@
 package com.enigma.Vcom.models;
 
+import java.time.LocalDate;
+
 public class OrderModel {
 
     private Integer id;
@@ -7,6 +9,8 @@ public class OrderModel {
     private Integer profileId;
 
     private Integer productId;
+
+    private LocalDate orderDate = LocalDate.now();
 
     public Integer getId() {
         return id;
@@ -30,5 +34,13 @@ public class OrderModel {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
     }
 }

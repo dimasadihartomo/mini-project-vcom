@@ -12,5 +12,7 @@ public interface ProductRepository {
 
     Product findById(Integer id);
 
+    List<Product> findAllbyPrice(Integer min, Integer max);
+
     List<Product> findAll();
 }

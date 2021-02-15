@@ -30,6 +30,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findAllProductByPrice(Integer min, Integer max) {
+        return productRepository.findAllbyPrice(min, max);
+    }
+
+    @Override
     public List<Product> findAllProduct() {
         return productRepository.findAll();
     }

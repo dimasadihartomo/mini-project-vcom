@@ -30,6 +30,12 @@ public class ProductController {
         return ResponseMessage.success(data);
     }
 
+    @GetMapping("/products/price-min={min}max={max}")
+    public ResponseMessage<List<Product>> findAllByPrice(@PathVariable Integer min, @PathVariable Integer max) {
+        List<Product> data = service.findAllProductByPrice(min, max);
+        return ResponseMessage.success(data);
+    }
+
     @GetMapping("/product{id}")
     public ResponseMessage findById(@PathVariable Integer id) {
 

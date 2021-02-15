@@ -1,17 +1,14 @@
 package com.enigma.Vcom.controllers;
 
 import com.enigma.Vcom.entities.Order;
-import com.enigma.Vcom.entities.Payment;
 import com.enigma.Vcom.entities.Product;
 import com.enigma.Vcom.entities.Profile;
 import com.enigma.Vcom.exceptions.EntityNotFoundException;
 import com.enigma.Vcom.exceptions.MoneyNotEnoughException;
 import com.enigma.Vcom.messages.ResponseMessage;
 import com.enigma.Vcom.models.OrderModel;
-import com.enigma.Vcom.models.PaymentModel;
 import com.enigma.Vcom.models.ProfileModel;
 import com.enigma.Vcom.services.OrderService;
-import com.enigma.Vcom.services.PaymentService;
 import com.enigma.Vcom.services.ProductService;
 import com.enigma.Vcom.services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;

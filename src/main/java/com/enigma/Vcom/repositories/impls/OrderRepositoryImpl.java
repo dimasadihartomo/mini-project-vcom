@@ -21,9 +21,9 @@ public class OrderRepositoryImpl implements OrderRepository {
     JdbcTemplate jdbcTemplate;
 
     private final String SAVE_ORDER = "INSERT INTO orders" +
-            " (product_id, profile_id) VALUES(?,?)";
+            " (order_date, product_id, profile_id) VALUES(?,?,?)";
     private final String UPDATE_ORDER = "UPDATE orders SET " +
-            "product_id = ?, profile_id = ? WHERE id = ?";
+            "order_date = ?, product_id = ?, profile_id = ? WHERE id = ?";
     private final String FINDBYID_ORDER = "SELECT * FROM orders o " +
             "LEFT JOIN profile p ON o.profile_id = p.id" +
             " LEFT JOIN product pr ON o.product_id = pr.id WHERE o.id = ?";
@@ -33,12 +33,12 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public boolean save(OrderModel order) {
-        return jdbcTemplate.update(SAVE_ORDER, order.getProductId(), order.getProfileId()) > 0;
+        return jdbcTemplate.update(SAVE_ORDER, order.getOrderDate(), order.getProductId(), order.getProfileId()) > 0;
     }
 
     @Override
     public boolean update(OrderModel order) {
-        return jdbcTemplate.update(UPDATE_ORDER, order.getProductId(), order.getProfileId(), order.getId()) > 0;
+        return jdbcTemplate.update(UPDATE_ORDER, order.getOrderDate(), order.getProductId(), order.getProfileId(), order.getId()) > 0;
     }
 
     @Override
