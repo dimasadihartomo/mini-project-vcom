@@ -36,6 +36,18 @@ public class ProductController {
         return ResponseMessage.success(data);
     }
 
+    @GetMapping("/products/title={title}")
+    public ResponseMessage<List<Product>> findAllByTitle(@PathVariable String title) {
+        List<Product> data = service.findAllProductByTitle(title);
+        return ResponseMessage.success(data);
+    }
+
+    @GetMapping("/products/type={type}")
+    public ResponseMessage<List<Product>> findAllByType(@PathVariable String type) {
+        List<Product> data = service.findAllProductByType(type);
+        return ResponseMessage.success(data);
+    }
+
     @GetMapping("/product{id}")
     public ResponseMessage findById(@PathVariable Integer id) {
 

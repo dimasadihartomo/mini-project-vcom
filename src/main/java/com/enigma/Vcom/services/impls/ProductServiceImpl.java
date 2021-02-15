@@ -35,6 +35,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findAllProductByTitle(String title) {
+        return productRepository.findAllbyTitle(title);
+    }
+
+    @Override
+    public List<Product> findAllProductByType(String type) {
+        return productRepository.findAllbyType(type);
+    }
+
+    @Override
     public List<Product> findAllProduct() {
         return productRepository.findAll();
     }

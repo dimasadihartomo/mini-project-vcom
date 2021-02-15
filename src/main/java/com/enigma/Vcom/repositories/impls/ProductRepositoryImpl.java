@@ -26,6 +26,8 @@ public class ProductRepositoryImpl implements ProductRepository {
     private final String FINDBYID_PRODUCT = "SELECT * FROM product WHERE id = ?";
     private final String FINDALL_PRODUCT = "SELECT * FROM product WHERE status = true";
     private final String FINDALL_PRODUCTBYPRICE = "SELECT * FROM product WHERE price >= ? AND price <= ?";
+    private final String FINDALL_PRODUCTBYTITLE = "SELECT * FROM product WHERE title LIKE ?";
+    private final String FINDALL_PRODUCTBYTYPE = "SELECT * FROM product WHERE types LIKE ? ";
 
     @Override
     public boolean save(Product product) {
@@ -59,6 +61,46 @@ public class ProductRepositoryImpl implements ProductRepository {
             }
         }, new Object[]{id});
         return productList.get(0);
+    }
+
+    @Override
+    public List<Product> findAllbyTitle(String title) {
+        List<Product> productList = jdbcTemplate.query(FINDALL_PRODUCTBYTITLE, new RowMapper<Product>() {
+            @Override
+            public Product mapRow(ResultSet resultSet, int i) throws SQLException {
+                Product product = new Product();
+                product.setId(resultSet.getInt("id"));
+                product.setDeveloper(resultSet.getString("developer"));
+                product.setGenre(resultSet.getString("genre"));
+                product.setPrice(resultSet.getInt("price"));
+                product.setReleaseDate(resultSet.getString("release_date"));
+                product.setSupportedSystem(resultSet.getString("supported_system"));
+                product.setTitle(resultSet.getString("title"));
+                product.setTypes(resultSet.getString("types"));
+                return product;
+            }
+        }, title);
+        return productList;
+    }
+
+    @Override
+    public List<Product> findAllbyType(String type) {
+        List<Product> productList = jdbcTemplate.query(FINDALL_PRODUCTBYTYPE, new RowMapper<Product>() {
+            @Override
+            public Product mapRow(ResultSet resultSet, int i) throws SQLException {
+                Product product = new Product();
+                product.setId(resultSet.getInt("id"));
+                product.setDeveloper(resultSet.getString("developer"));
+                product.setGenre(resultSet.getString("genre"));
+                product.setPrice(resultSet.getInt("price"));
+                product.setReleaseDate(resultSet.getString("release_date"));
+                product.setSupportedSystem(resultSet.getString("supported_system"));
+                product.setTitle(resultSet.getString("title"));
+                product.setTypes(resultSet.getString("types"));
+                return product;
+            }
+        }, type);
+        return productList;
     }
 
     @Override

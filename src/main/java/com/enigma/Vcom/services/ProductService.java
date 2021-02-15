@@ -14,5 +14,9 @@ public interface ProductService {
 
     List<Product> findAllProductByPrice(Integer min, Integer max);
 
+    List<Product> findAllProductByTitle(String title);
+
+    List<Product> findAllProductByType(String type);
+
     List<Product> findAllProduct();
 }
