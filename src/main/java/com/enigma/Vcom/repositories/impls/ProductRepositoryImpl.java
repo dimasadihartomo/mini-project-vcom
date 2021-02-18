@@ -33,7 +33,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     public boolean save(Product product) {
         return jdbcTemplate.update(SAVE_PRODUCT, product.getDeveloper(), product.getGenre(), product.getPrice(),
                 product.getReleaseDate(), product.getStatus()
-                , product.getSupportedSystem(), product.getTitle(), product.getTypes(), product.getId()) > 0;
+                , product.getSupportedSystem(), product.getTitle(), product.getTypes()) > 0;
     }
 
     @Override
